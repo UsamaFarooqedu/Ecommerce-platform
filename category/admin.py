@@ -3,4 +3,8 @@ from .models import *
 
 # Register your models here.
 
-admin.site.register(category)
+class Categoryadmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("name",)}
+    list_display = ('name', 'slug')
+
+admin.site.register(Category, Categoryadmin)
